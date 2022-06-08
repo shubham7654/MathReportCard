@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  font-family: 'Poppins';
+  color: #363b96;
+}
+.page-container {
+  page-break-before: always;
+  page-break-after: always;
+  width: 1000px;
+  margin: 10px auto;
+  /* height: 1132px; */
+}
+/* #first-page {
+}
+
+#second-page {
+} */
+.border-container {
+  border: 5px solid #363b96;
+}
+#border-container-2 {
+  background: url('images/Asset 22@4x.png');
+  background-size: 63%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+.medium-container {
+  margin: 40px 0;
+}
+.top-label {
+  text-align: center;
+  padding: 6px;
+  background-color: #363b96;
+  font-size: 18px;
+  font-style: bold;
+  font-weight: 500;
+}
+.label-text-container {
+  color: white;
+}
+#skills-container {
+  padding: 30px;
+}
+.skills-inner-container {
+  border: 2px solid #363b96;
+  border-radius: 15px;
+  margin: 65px 0;
+  position: relative;
+}
+.skills-inner-container:nth-child(4) {
+  margin: 0;
+}
+.legend {
+  position: absolute;
+  top: -50px;
+  left: 30px;
+}
+.skill-discription {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+.discription-text-container {
+  flex: 8;
+  align-self: flex-end;
+}
+.discription-text {
+  padding: 15px 30px;
+}
+#discription-text-3 {
+  padding: 36px 30px;
+}
+.remarks-text-container {
+  align-self: center;
+  text-align: center;
+  flex: 1;
+  font-size: 18px;
+  font-style: bold;
+  font-weight: 600;
+  border-left: 2px solid #363b96;
+  line-height: 75px;
+}
+#percentage-container {
+  text-align: center;
+}
+#percent-inner-container {
+  background-color: #363b96;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 40px;
+  border-radius: 100px;
+  font-size: 18px;
+}
+.percent-text {
+  color: #fec453;
+  font-weight: 700;
+}
+.remarks-outer-container {
+  padding: 50px 30px; 
+}
+.ul-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.page-1-medium-container {
+  text-align: center;
+}
+.page-1-medium-container img {
+  width: 100%;
+}
+#image-container-1 img {
+  width: 45%;
+}
+#discription-container {
+  padding: 25px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#discription-container p {
+  font-size: 18px;
+}
+#image-container-2 {
+  width: 990px;
+  height: 749.34px;
+}
+.icon-span img {
+  width: 300px;
+}
+#border-container-3 {
+  padding: 50px;
+}
+#distription-text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#distription-text p {
+  color: #000000!important;
+}
+#distription-text p:nth-child(1) {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 45px;
+}
+#distription-text p:nth-child(2) {
+  margin: 25px;
+  text-align: left;
+}
+#image-container-3 img {
+  width: 100%;
+}

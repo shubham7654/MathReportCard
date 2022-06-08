@@ -1,0 +1,201 @@
+:root {
+  --blue-shade: #363897;
+  --orange-shade: #e69b10;
+  --submit-text-color: #000000;
+  --blue-pigment: #373E95ff;
+  --orange-red: #EF661Fff;
+  --jet: #363636ff;
+}
+body {
+  font-family: 'Baloo 2';
+}
+#left-main-container {
+  display: none;
+  height: 100vh;
+}
+#background-image-container {
+  display: inline-block;
+}
+#background-image-container img {
+  box-shadow:
+    0px 0px 0.3px rgba(0, 0, 0, 0.5),
+    0px 0px 2px rgba(0, 0, 0, 1)
+  ;
+  border-radius: 5px;
+}
+#form-outer-container {
+  height: 100vh;
+  overflow-y: scroll;
+  box-shadow: 0px 0px 0.3px rgba(0, 0, 0, 0.5), 0px 0px 2px rgba(0, 0, 0, 1);
+  background-image: url('images/graph.png');
+  background-position: bottom;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-blend-mode: hue;
+  background-color: #000000ca;
+}
+.form-control {
+  box-shadow: none !important;
+}
+#skill-container > div > label {
+  margin: 6px 0;
+}
+#skill-container > div > label::before {
+  content: "";
+  margin-right: 5px;
+  border-left: 4px solid var(--blue-shade);
+}
+.form-control-plaintext {
+  color: white;
+}
+.input-group-text {
+  padding-top: 10px;
+  width: 50px;
+}
+.fa-solid {
+  color: var(--blue-pigment) !important;
+}
+.left-text {
+  border-right: 1px solid white;
+  padding-right: 6px;
+  margin-right: 6px;
+}
+.bg-primary {
+  background-color: var(--blue-pigment)!important;
+  padding-left: 15px;
+}
+#skill-text-container {
+  margin-bottom: 10px;
+}
+.bg-success {
+  padding: 8px 20px;
+  margin-left: 5px;
+}
+#q1q8-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.q1q8-input-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+  color: white;
+}
+#beyondskool-right-logo img {
+  background: #eeee;
+  border-radius: 5px;
+}
+.q1q8-label-text {
+  margin: 0;
+}
+.label-text-container {
+  flex: 1;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue-pigment);
+  border-radius: 50%;
+}
+/* .q1q8-input-container::before {
+  content: "";
+  margin-right: 5px;
+  border-left: 4px solid var(--orange-shade);
+} */
+.radio-container {
+  display: flex;
+  gap: 10px;
+  flex: 2;
+  justify-content: space-around;
+}
+#skills-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.check-container {
+  display: flex;
+  gap: 10px;
+  flex: 2;
+  /* justify-content: flex-start; */
+}
+.form-check {
+  flex: 1;
+  align-self: center;
+}
+.strength-development-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0;
+}
+.sds-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.strengths-child-container {
+  display: flex;
+  gap: 10px;
+}
+.border-bottom {
+  color: white;
+}
+@media screen and (min-width: 580px) {
+  #form-outer-container {
+    padding: 0 40px;
+  }
+  #name-container {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  #submit-container {
+    float: right;
+    margin: 0 15px 15px 0;
+  }
+}
+@media screen and (min-width: 800px) {
+  #main-container {
+    display: flex;
+  }
+  .name-container {
+    width: 49%;
+  }  
+  #left-main-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+  }
+  #background-image-container {
+    width: 85%;
+  } 
+  #beyondskool-left-logo {
+    align-self: flex-start;
+  }
+  #beyondskool-right-logo {
+    display: none;
+  }
+  #form-outer-container {
+    flex: 2;
+  }
+}
+@media screen and (min-width: 1000px) {
+  #background-image-container {
+    width: 50%;
+  }
+  /* #background-image-container img {
+    width: 100%;
+  } */
+  #left-main-container {
+    flex: 1;
+  }
+  #form-outer-container {
+    flex: 1;
+  }
+}
