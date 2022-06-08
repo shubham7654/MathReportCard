@@ -57,7 +57,7 @@ $("#filterByTeacherName").on("click", function(){
     type: 'POST',
     url: 'getDataByTeacherName.php',
     data: {
-      tname: $("#teacher-name").val()
+      tname: $("#tname").val()
     },
     success: function(result){
       $("#table-body").html(result);
@@ -77,38 +77,3 @@ $("#filterByGrade").on("click", function(){
     }
   });
 });
-
-$(function() {
-  $("#teacher-name").autocomplete({
-    source: 'autocompleteTname.php'
-  });
-});
-/* $(function() {
-  var availableTags = [
-    "ActionScript",
-    "AppleScript",
-    "Asp",
-    "BASIC",
-    "C",
-    "C++",
-    "Clojure",
-    "COBOL",
-    "ColdFusion",
-    "Erlang",
-    "Fortran",
-    "Groovy",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Lisp",
-    "Perl",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Scala",
-    "Scheme"
-  ];
-  $("#teacher-name").autocomplete({
-  source: availableTags
-  });
-}); */
