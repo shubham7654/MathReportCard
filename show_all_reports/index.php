@@ -12,17 +12,6 @@
 
   $conn = new mysqli($servername, $username, $password, $dbname);
 
-/*     if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  } */
-
-  //Inputs
-
-/*     $tname = $_GET['tname'];
-  $pname = $_GET['pname'];
-  $sname = $_GET['sname'];
-  $grade = $_GET['grade']; */
-
   $get = "SELECT * FROM `mathreportcard` LIMIT 10";
 
   if (!$conn -> query($get)) {
@@ -45,14 +34,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Poppins&family=Source+Code+Pro&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <!-- JQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- JQuery UI -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -71,14 +58,14 @@
       <table id="report-table" class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th scope="col" id="filter-date" data-bs-toggle="modal" data-bs-target="#dateModal" title="Click to filter by date">Date<span><i class="fa-solid fa-angle-down px-1"></i></span>
+            <th scope="col" id="filter-date" data-bs-toggle="modal" data-bs-target="#dateModal" title="Click to filter by date" class="filter-tab">Date<span><i class="fa-solid fa-angle-down px-1"></i></span>
             </th>
-            <th scope="col" id="filter-tname" data-bs-toggle="modal" data-bs-target="#teacherModal" title="Click to filter by teacher name">Teacher Name
+            <th scope="col" id="filter-tname" data-bs-toggle="modal" data-bs-target="#teacherModal" title="Click to filter by teacher name" class="filter-tab">Teacher Name
               <span><i class="fa-solid fa-angle-down px-1"></i></span>
             </th>
             <th scope="col">Parent Name</th>
             <th scope="col">Student Name</th>
-            <th scope="col" id="filter-grade" data-bs-toggle="modal" data-bs-target="#gradeModal" title="Click to filter by grade">Grade
+            <th scope="col" id="filter-grade" data-bs-toggle="modal" data-bs-target="#gradeModal" title="Click to filter by grade" class="filter-tab">Grade
               <span><i class="fa-solid fa-angle-down px-1"></i></span>
             </th>
             <th scope="col">Q1</th>
@@ -130,7 +117,7 @@
               if ($rowr['q4']=='off') {
                 echo "<td>0</td>";
                 $q4_marks = 0;
-              } else { 
+              } else {
                 echo "<td>1</td>";
                 $q4_marks = 1;
               }
@@ -230,6 +217,7 @@
           <div class="mb-3">
             <label for="tname" class="col-form-label">Teacher Name:</label>
             <input type="text" class="form-control" id="tname" name="tname">
+            <ul id="autocomplete-items"></ul>
           </div>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <input type="submit" id="filterByTeacherName" class="btn btn-primary" data-bs-dismiss="modal" value="Next">
@@ -267,10 +255,12 @@
         source: 'autocompleteTname.php',
         minLength: 1,
         autoFocus:true,
+        appendTo: "#autocomplete-items"
       });
-    } );
+    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

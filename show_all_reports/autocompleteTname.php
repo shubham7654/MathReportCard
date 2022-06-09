@@ -12,11 +12,9 @@ $dbname = "reportcard";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-//Inputs
+//Query
 
-$get = "SELECT * FROM `mathreportcard` WHERE `tname` LIKE '".$_GET['term']."%' LIMIT 25";
-
-// $get = "SELECT * FROM `mathreportcard` WHERE `tname` LIKE '%s%' LIMIT 25";
+$get = "SELECT DISTINCT `tname` FROM `mathreportcard` WHERE `tname` LIKE '".$_GET['term']."%'";
 
 if (!$conn -> query($get)) {
   echo("Error description: " . $conn -> error);
@@ -33,9 +31,5 @@ if ($result->num_rows > 0) {
 }
 
 echo json_encode($res);
-
-// echo json_encode($_GET['tname']);
-
-// echo json_encode(["ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure", "COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy", "Haskell", "Java", "JavaScript", "Lisp", "Perl", "PHP", "Python", "Ruby", "Scala", "Scheme"]);
 
 ?>
