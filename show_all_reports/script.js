@@ -29,6 +29,52 @@ function download_table_as_csv(table_id, separator = ',') {
   document.body.removeChild(link);
 }
 
+// Marks Filter Code
+
+// Marks filter out of 4
+
+$(document).ready(function($) {
+  $('#OutOf4-name').one("click", function() {
+    $('#show-more-reports-button').click();
+  });
+  $('#OutOf4-name').change(function() {
+      var value = $(this).val().toLowerCase();
+      $("#table-body tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+});
+
+// Marks filter out of 8
+
+$(document).ready(function($) {
+  $('#OutOf8-name').one("click", function() {
+    $('#show-more-reports-button').click();
+  });
+  $('#OutOf8-name').change(function() {
+      var value = $(this).val().toLowerCase();
+      $("#table-body tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+});
+
+// Marks filter out of 12
+
+$(document).ready(function($) {
+  $('#OutOf12-name').one("click", function() {
+    $('#show-more-reports-button').click();
+  });
+  $('#OutOf12-name').change(function() {
+      var value = $(this).val().toLowerCase();
+      $("#table-body tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+});
+
+//Show All Reports
+
 $("#show-more-reports-button").on("click", function() {
   $.ajax({
     type: 'POST',

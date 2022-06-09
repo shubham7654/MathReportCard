@@ -58,16 +58,11 @@
       <table id="report-table" class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th scope="col" id="filter-date" data-bs-toggle="modal" data-bs-target="#dateModal" title="Click to filter by date" class="filter-tab">Date<span><i class="fa-solid fa-angle-down px-1"></i></span>
-            </th>
-            <th scope="col" id="filter-tname" data-bs-toggle="modal" data-bs-target="#teacherModal" title="Click to filter by teacher name" class="filter-tab">Teacher Name
-              <span><i class="fa-solid fa-angle-down px-1"></i></span>
-            </th>
+            <th scope="col" id="filter-date" data-bs-toggle="modal" data-bs-target="#dateModal" title="Click to filter by date">Date</th>
+            <th scope="col" id="filter-tname" data-bs-toggle="modal" data-bs-target="#teacherModal" title="Click to filter by teacher name">Teacher Name</th>
             <th scope="col">Parent Name</th>
             <th scope="col">Student Name</th>
-            <th scope="col" id="filter-grade" data-bs-toggle="modal" data-bs-target="#gradeModal" title="Click to filter by grade" class="filter-tab">Grade
-              <span><i class="fa-solid fa-angle-down px-1"></i></span>
-            </th>
+            <th scope="col" id="filter-grade" data-bs-toggle="modal" data-bs-target="#gradeModal" title="Click to filter by grade">Grade</th>
             <th scope="col">Q1</th>
             <th scope="col">Q2</th>
             <th scope="col">Q3</th>
@@ -76,9 +71,10 @@
             <th scope="col">Q6</th>
             <th scope="col">Q7</th>
             <th scope="col">Q8</th>
-            <th scope="col">Q1-Q4 Total</th>
-            <th scope="col">Q5-Q8 Total</th>
-            <th scope="col">Grand Total</th>
+            <th scope="col"
+            id="filter-marks-out-of-4" data-bs-toggle="modal" data-bs-target="#marksOutOf4Modal" title="Click to filter by marks out of 4">Q1-Q4 Total</th>
+            <th scope="col" id="filter-marks-out-of-8" data-bs-toggle="modal" data-bs-target="#marksOutOf8Modal" title="Click to filter by marks out of 8">Q5-Q8 Total</th>
+            <th scope="col" id="filter-marks-out-of-12" data-bs-toggle="modal" data-bs-target="#marksOutOf12Modal" title="Click to filter by marks out of 12">Grand Total</th>
           </tr>
         </thead>
         <tbody id="table-body">
@@ -229,7 +225,9 @@
       </div>
     </div>
   </div>
-  <!-- Modal -->
+
+  <!-- Date Filter -->
+
   <div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="dateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -252,6 +250,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Teacher Name Filter -->
+
   <div class="modal fade" id="teacherModal" tabindex="-1" aria-labelledby="teacherModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -273,6 +274,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Grade Filter -->
+
   <div class="modal fade" id="gradeModal" tabindex="-1" aria-labelledby="gradeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -294,6 +298,105 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <input type="submit" data-bs-dismiss="modal" id="filterByGrade" class="btn btn-primary" value="Next">
+        </div>  
+      </div>
+    </div>
+  </div>
+  
+  <!-- Marks Filter -->
+
+  <div class="modal fade" id="marksOutOf4Modal" tabindex="-1" aria-labelledby="marksOutOf4ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="marksOutOf4ModalLabel">Filter by Marks Out of 4</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="OutOf4-name" class="col-form-label">Marks Out of 4:</label>
+            <select class="form-control" id="OutOf4-name" name="filter-marks-out-of-4">
+              <option value="0/4">0</option>
+              <option value="1/4">1</option>
+              <option value="2/4">2</option>
+              <option value="3/4">3</option>
+              <option value="4/4">4</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <input type="submit" data-bs-dismiss="modal" id="filterBymarksOutOf4" class="btn btn-primary" value="Next">
+        </div>  
+      </div>
+    </div>
+  </div>
+
+  <!-- Marks Filter Out of 8 -->
+
+  <div class="modal fade" id="marksOutOf8Modal" tabindex="-1" aria-labelledby="marksOutOf8ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="marksOutOf8ModalLabel">Filter by Marks Out of 8</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="OutOf8-name" class="col-form-label">Marks Out of 8:</label>
+            <select class="form-control" id="OutOf8-name" name="filter-marks-out-of-8">
+              <option value="0/8">0</option>
+              <option value="1/8">1</option>
+              <option value="2/8">2</option>
+              <option value="3/8">3</option>
+              <option value="4/8">4</option>
+              <option value="5/8">5</option>
+              <option value="6/8">6</option>
+              <option value="7/8">7</option>
+              <option value="8/8">8</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <input type="submit" data-bs-dismiss="modal" id="filterBymarksOutOf8" class="btn btn-primary" value="Next">
+        </div>  
+      </div>
+    </div>
+  </div>
+
+  <!-- Marks Filter Out of 12 -->
+
+  <div class="modal fade" id="marksOutOf12Modal" tabindex="-1" aria-labelledby="marksOutOf12ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="marksOutOf12ModalLabel">Filter by Marks Out of 12</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="OutOf12-name" class="col-form-label">Marks Out of 12:</label>
+            <select class="form-control" id="OutOf12-name" name="filter-marks-out-of-12">
+              <option value="0/12">0</option>
+              <option value="1/12">1</option>
+              <option value="2/12">2</option>
+              <option value="3/12">3</option>
+              <option value="4/12">4</option>
+              <option value="5/12">5</option>
+              <option value="6/12">6</option>
+              <option value="7/12">7</option>
+              <option value="8/12">8</option>
+              <option value="9/12">9</option>
+              <option value="10/12">10</option>
+              <option value="11/12">11</option>
+              <option value="12/12">12</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <input type="submit" data-bs-dismiss="modal" id="filterBymarksOutOf12" class="btn btn-primary" value="Next">
         </div>  
       </div>
     </div>

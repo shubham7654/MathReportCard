@@ -16,7 +16,12 @@
   width: 98%;
   margin: 30px 10px;
 }
-#filter-date, #filter-tname, #filter-grade {
+#filter-date, #filter-tname, #filter-grade, #filter-marks-out-of-4, #filter-marks-out-of-8, #filter-marks-out-of-12 {
+  color: #198754!important;
+  cursor: pointer!important;
+}
+#filter-date:hover, #filter-tname:hover, #filter-grade:hover, #filter-marks-out-of-4:hover, #filter-marks-out-of-8:hover, #filter-marks-out-of-12:hover {
+  color: #157347!important;
   cursor: pointer!important;
 }
 #show-more-reports-button, #master-filter-reports-button {
