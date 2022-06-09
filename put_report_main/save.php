@@ -1,14 +1,14 @@
 <?php
 
-/* $servername = "localhost:3306";
+$servername = "localhost:3306";
 $username = "rahul";
 $password = "Tiwari@2022";
-$dbname = "reportcard"; */
+$dbname = "reportcard";
 
-$servername = "localhost:3306";
+/* $servername = "localhost:3306";
 $username = "root";
 $password = "";
-$dbname = "reportcard";
+$dbname = "reportcard"; */
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 

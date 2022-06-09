@@ -1,15 +1,15 @@
 <?php
   $selector = $_POST['selector'];
 
-/*     $servername = "localhost:3306";
+  $servername = "localhost:3306";
   $username = "rahul";
   $password = "Tiwari@2022";
-  $dbname = "reportcard"; */
+  $dbname = "reportcard";
 
-  $servername = "localhost:3306";
+/*   $servername = "localhost:3306";
   $username = "root";
   $password = "";
-  $dbname = "reportcard";
+  $dbname = "reportcard"; */
 
   $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -18,16 +18,16 @@
   } else if($selector==='masterReport') {
     $fromDate = $_POST['fromDate'];
     if ($fromDate === "") {
-      $fromDate = null; // or 'NULL' for SQL
+      $fromDate = null;
     }
     $toDate = $_POST['toDate'];
     if ($toDate === "") {
-      $toDate = null; // or 'NULL' for SQL
+      $toDate = null;
     }
     $tname = $_POST['tname'];
     $grade = $_POST['grade'];
     if ($grade === '') {
-      $grade = null; // or 'NULL' for SQL
+      $grade = null;
     }
     if(isset($fromDate)&&isset($toDate)&&isset($tname)&&isset($grade)) {
       $get = "SELECT * FROM `mathreportcard` WHERE (`date` BETWEEN '$fromDate' AND '$toDate') AND `tname` = '$tname' AND `grade` = '$grade'";
