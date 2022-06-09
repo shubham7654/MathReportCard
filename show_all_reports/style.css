@@ -9,26 +9,17 @@
   border-bottom: 1px solid #353596;
   box-shadow: 1px 0 3px #000000;
 }
-/* #image-container {} */
 #image-container img {
   width: 150px;
 }
-/* #export-button-container button {} */
 #table-outer-container {
   width: 98%;
   margin: 30px 10px;
 }
-#report-table {
-  overflow-y: scroll!important;
-}
 #filter-date, #filter-tname, #filter-grade {
   cursor: pointer!important;
 }
-#show-more-reports-button {
-  cursor: pointer!important;
-  display: inline-block;
-}
-#master-filter-reports-button {
+#show-more-reports-button, #master-filter-reports-button {
   cursor: pointer!important;
   display: inline-block;
 }

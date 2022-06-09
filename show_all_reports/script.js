@@ -30,19 +30,41 @@ function download_table_as_csv(table_id, separator = ',') {
 }
 
 $("#show-more-reports-button").on("click", function() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
-    $("#table-body").html(this.responseText);
-  }
-  xhttp.open("GET", "getAllReports.php");
-  xhttp.send();
+  $.ajax({
+    type: 'POST',
+    url: 'extractor.php',
+    data: {
+      selector: 'allReports'
+    },
+    success: function(result){
+      $("#table-body").html(result);
+    }
+  });
+});
+
+$("#masterFilter").on("click", function() {
+  $.ajax({
+    type: 'POST',
+    url: 'extractor.php',
+    data: {
+      selector: 'masterReport',
+      fromDate: $("#master-from-input").val(),
+      toDate: $("#master-to-input").val(),
+      tname: $("#master-tname").val(),
+      grade: $("#master-grade-name").val()
+    },
+    success: function(result){
+      $("#table-body").html(result);
+    }
+  });
 });
 
 $("#filterByDate").on("click", function(){
   $.ajax({
     type: 'POST',
-    url: 'getDataByDate.php',
+    url: 'extractor.php',
     data: {
+      selector: 'dateWise',
       fromDate: $("#from-input").val(),
       toDate: $("#to-input").val()
     },
@@ -55,8 +77,9 @@ $("#filterByDate").on("click", function(){
 $("#filterByTeacherName").on("click", function(){
   $.ajax({
     type: 'POST',
-    url: 'getDataByTeacherName.php',
+    url: 'extractor.php',
     data: {
+      selector: 'TNWise',
       tname: $("#tname").val()
     },
     success: function(result){
@@ -68,8 +91,9 @@ $("#filterByTeacherName").on("click", function(){
 $("#filterByGrade").on("click", function(){
   $.ajax({
     type: 'POST',
-    url: 'getDataByGrade.php',
+    url: 'extractor.php',
     data: {
+      selector: 'gradeWise',
       grade: $("#grade-name").val()
     },
     success: function(result){

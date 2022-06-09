@@ -177,13 +177,57 @@
             }
           }      
         ?>
-        <!-- </tbody> -->
+        </tbody>
       </table>
     </div>
   </div>
   <div id="show-more-reports-container" class="mx-3">
     <p id="show-more-reports-button" class="text-primary shadow rounded p-2 font-weight-bold">Show more reports...</p>
-    <p id="master-filter-reports-button" class="text-primary shadow rounded p-2 font-weight-bold">Master filter reports...</p>
+    <p id="master-filter-reports-button" class="text-primary shadow rounded p-2 font-weight-bold" data-bs-toggle="modal" data-bs-target="#masterModal">Master filter reports...</p>
+  </div>
+  <!-- Master Filter -->
+  <div class="modal fade" id="masterModal" tabindex="-1" aria-labelledby="masterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content container-fluid">
+        <div class="modal-header">
+          <h5 class="modal-title" id="masterModalLabel">Master Filter Reports</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body row">
+          <div class="mb-3 col">
+            <h5>Select Date Range</h5>
+            <label for="master-from-input" class="col-form-label">From:</label>
+            <input type="date" id="master-from-input" class="form-control" value="">
+            <label for="master-to-input" class="col-form-label">To:</label>
+            <input type="date" id="master-to-input" class="form-control"  value="">
+          </div>
+          <div class="mb-3 col">
+            <div class="mb-3 col">
+              <h5>Select Teacher Name</h5>
+              <label for="master-tname" class="col-form-label">Teacher Name:</label>
+              <input type="text" class="form-control" id="master-tname" name="master-tname">
+              <ul class="autocomplete-items"></ul>
+            </div>
+            <hr>
+            <div class="mb-3 col">
+            <h5>Select Grade</h5>
+            <label for="master-grade-name" class="col-form-label">Grade:</label>
+            <select class="form-control" id="master-grade-name" value="null">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="" selected="selected" style="display: none;"></option>
+            </select>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <input type="submit" id="masterFilter" class="btn btn-primary" data-bs-dismiss="modal" value="Next">
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Modal -->
   <div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="dateModalLabel" aria-hidden="true">
@@ -200,6 +244,8 @@
             <label for="to-input" class="col-form-label">To:</label>
             <input type="date" id="to-input" class="form-control">
           </div>
+        </div>
+        <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <input type="submit" id="filterByDate" class="btn btn-primary" data-bs-dismiss="modal" value="Next">
         </div>
@@ -219,6 +265,8 @@
             <input type="text" class="form-control" id="tname" name="tname">
             <ul id="autocomplete-items"></ul>
           </div>
+        </div>
+        <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <input type="submit" id="filterByTeacherName" class="btn btn-primary" data-bs-dismiss="modal" value="Next">
         </div>
@@ -242,10 +290,11 @@
               <option value="5">5</option>
             </select>
           </div>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <input type="submit" 
-        data-bs-dismiss="modal" id="filterByGrade" class="btn btn-primary" value="Next">
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <input type="submit" data-bs-dismiss="modal" id="filterByGrade" class="btn btn-primary" value="Next">
+        </div>  
       </div>
     </div>
   </div>
@@ -255,7 +304,17 @@
         source: 'autocompleteTname.php',
         minLength: 1,
         autoFocus:true,
+        delay: 0,
         appendTo: "#autocomplete-items"
+      });
+    });
+    $( function() {
+      $( "#master-tname" ).autocomplete({
+        source: 'autocompleteTname.php',
+        minLength: 1,
+        autoFocus:true,
+        delay: 0,
+        appendTo: ".autocomplete-items"
       });
     });
   </script>

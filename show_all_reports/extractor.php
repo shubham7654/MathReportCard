@@ -1,5 +1,6 @@
 <?php
-  
+  $selector = $_POST['selector'];
+
 /*     $servername = "localhost:3306";
   $username = "rahul";
   $password = "Tiwari@2022";
@@ -12,18 +13,44 @@
 
   $conn = new mysqli($servername, $username, $password, $dbname);
 
-/*     if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  } */
-
-  //Inputs
-
-/*     $tname = $_GET['tname'];
-  $pname = $_GET['pname'];
-  $sname = $_GET['sname'];
-  $grade = $_GET['grade']; */
-
-  $get = "SELECT * FROM `mathreportcard`";
+  if($selector==='allReports') {
+    $get = "SELECT * FROM `mathreportcard`";
+  } else if($selector==='masterReport') {
+    $fromDate = $_POST['fromDate'];
+    if ($fromDate === "") {
+      $fromDate = null; // or 'NULL' for SQL
+    }
+    $toDate = $_POST['toDate'];
+    if ($toDate === "") {
+      $toDate = null; // or 'NULL' for SQL
+    }
+    $tname = $_POST['tname'];
+    $grade = $_POST['grade'];
+    if ($grade === '') {
+      $grade = null; // or 'NULL' for SQL
+    }
+    if(isset($fromDate)&&isset($toDate)&&isset($tname)&&isset($grade)) {
+      $get = "SELECT * FROM `mathreportcard` WHERE (`date` BETWEEN '$fromDate' AND '$toDate') AND `tname` = '$tname' AND `grade` = '$grade'";
+    } else if(is_null($fromDate)&&is_null($toDate)&&isset($tname)&&isset($grade)) {
+      $get = "SELECT * FROM `mathreportcard` WHERE `tname` = '$tname' AND `grade` = '$grade'";
+    } else if(isset($fromDate)&&isset($toDate)&&isset($tname)&&is_null($grade)) {
+      $get = "SELECT * FROM `mathreportcard` WHERE (`date` BETWEEN '$fromDate' AND '$toDate') AND `tname` = '$tname'";
+    } else {
+      return;
+    }
+  } else if($selector==='dateWise') {
+    $fromDate = $_POST['fromDate'];
+    $toDate = $_POST['toDate'];
+    $get = "SELECT * FROM `mathreportcard` WHERE `date` BETWEEN '$fromDate' AND '$toDate'";
+  } else if($selector==='TNWise') {
+    $tname = $_POST['tname'];
+    $get = "SELECT * FROM `mathreportcard` WHERE `tname` = '$tname'";
+  } else if($selector==='gradeWise') {
+    $grade = $_POST['grade'];
+    $get = "SELECT * FROM `mathreportcard` WHERE `grade` = '$grade'";
+  } else {
+    return;
+  }
 
   if (!$conn -> query($get)) {
     echo("Error description: " . $conn -> error);
@@ -123,6 +150,8 @@
       
       echo "</tr>";
     }
+  } else {
+    echo "<h4 style=\"color: #EF661Fff;margin-top: 40px;\">No records found!</h4>";
   }      
 
   $conn->close();
