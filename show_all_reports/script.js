@@ -147,3 +147,32 @@ $("#filterByGrade").on("click", function(){
     }
   });
 });
+
+$get_report_card = [];
+$( document ).ready(function() {
+  $('.get-report-card').click(function() {
+      $row = $(this).closest('tr');
+      $columns = $row.find('td').slice(1, 5);
+  
+      $columns.addClass('row-highlight');
+  
+      $.each($columns, function(i, item) {
+        $get_report_card.push(item.innerHTML);
+        // alert(item.innerHTML);
+      });
+
+      $pdf_str = "/MathReportCard/get_report_main/generator/index.php?tname="+$get_report_card[0]+"&pname="+$get_report_card[1]+"&sname="+$get_report_card[2]+"&grade="+$get_report_card[3];
+
+      // For Live
+
+      // $pdf_str = "https://club-beyond.gobeyondskool.com/MathReportCard/get_report_main/generator/index.php?tname="+$get_report_card[0]+"&pname="+$get_report_card[1]+"&sname="+$get_report_card[2]+"&grade="+$get_report_card[3];
+
+      $.ajax({
+        url: '/MathReportCard/get_report_main/generator/index.php',
+        type: 'GET',
+        success: function(html) {
+          window.location.replace($pdf_str);
+        }
+      })
+  });
+});

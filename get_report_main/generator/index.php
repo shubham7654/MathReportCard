@@ -1,134 +1,89 @@
 <?php
-  if(isset($_GET['submit'])) {
 
 /*     $servername = "localhost:3306";
-    $username = "rahul";
-    $password = "Tiwari@2022";
-    $dbname = "reportcard"; */
+  $username = "rahul";
+  $password = "Tiwari@2022";
+  $dbname = "reportcard"; */
 
-    $servername = "localhost:3306";
-    $username = "root";
-    $password = "";
-    $dbname = "reportcard";
+  $servername = "localhost:3306";
+  $username = "root";
+  $password = "";
+  $dbname = "reportcard";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+  $conn = new mysqli($servername, $username, $password, $dbname);
 
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
-
-    //Inputs
-
-    $tname = $_GET['tname'];
-    $pname = $_GET['pname'];
-    $sname = $_GET['sname'];
-    $grade = $_GET['grade'];
-  
-    $get = "SELECT * FROM `mathreportcard` WHERE `tname` = '$tname' AND `pname` = '$pname' AND `sname` = '$sname' AND `grade` = $grade";
-  
-    if (!$conn -> query($get)) {
-      echo("Error description: " . $conn -> error);
-    }
-
-    $result = mysqli_query($conn, $get);
-
-    if ($result->num_rows > 0) {
-      while ($rowr = $result->fetch_assoc()) {
-        $q1_input = $rowr['q1'];
-        $q2_input = $rowr['q2'];
-        $q3_input = $rowr['q3'];
-        $q4_input = $rowr['q4'];
-        $q5_input = $rowr['q5'];
-        $q6_input = $rowr['q6'];
-        $q7_input = $rowr['q7'];
-        $q8_input = $rowr['q8'];
-
-        $checklist_array_1 = $rowr['check_list_1'];
-        $checklist_array_2 = $rowr['check_list_2'];
-      }
-    }
-
-    //Marks Logic
-    
-/*     if ($q1_input=='off') {
-      $q1_marks = 0;
-    } else { 
-      $q1_marks = 1;
-    }
-    if ($q2_input=='off') {
-      $q2_marks = 0;
-    } else { 
-      $q2_marks = 1;
-    }
-    if ($q3_input=='off') {
-      $q3_marks = 0;
-    } else { 
-      $q3_marks = 1;
-    }
-    if ($q4_input=='off') {
-      $q4_marks = 0;
-    } else { 
-      $q4_marks = 1;
-    }
-    if ($q5_input=='a') {
-      $q5_marks = 1;
-    } else {
-      $q5_marks = 0;
-    }
-    if ($q6_input=='a') {
-      $q6_marks = 1;
-    } else {
-      $q6_marks = 0;
-    }
-    if ($q7_input=='a') {
-      $q7_marks = 1;
-    } else {
-      $q7_marks = 0;
-    }
-    if ($q8_input=='a') {
-      $q8_marks = 1;
-    } else {
-      $q8_marks = 0;
-    } */
-
-    //Skills Logic
-
-    if ($q5_input=='a') {
-      $logical = "Excellent";
-    } else if ($q5_input=='b') {
-      $logical = "Good";
-    } else {
-      $logical = "Average";
-    }
-    if ($q6_input=='a') {
-      $analytical = "Excellent";
-    } else if ($q6_input=='b') {
-      $analytical = "Good";
-    } else {
-      $analytical = "Average";
-    }
-    if ($q7_input=='a') {
-      $computation = "Excellent";
-    } else if ($q7_input=='b') {
-      $computation = "Good";
-    } else {
-      $computation = "Average";
-    }
-    if ($q8_input=='a') {
-      $higher_order = "Excellent";
-    } else if ($q8_input=='b') {
-      $higher_order = "Good";
-    } else {
-      $higher_order = "Average";
-    }
-    
-    //String converter
-
-    $checklist1 = explode(',', $checklist_array_1);
-    $checklist2 = explode(',', $checklist_array_2);
-
-    $conn->close();
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
   }
+
+  //Inputs
+
+  $tname = $_GET['tname'];
+  $pname = $_GET['pname'];
+  $sname = $_GET['sname'];
+  $grade = $_GET['grade'];
+
+  $get = "SELECT * FROM `mathreportcard` WHERE `tname` = '$tname' AND `pname` = '$pname' AND `sname` = '$sname' AND `grade` = $grade";
+
+  if (!$conn -> query($get)) {
+    echo("Error description: " . $conn -> error);
+  }
+
+  $result = mysqli_query($conn, $get);
+
+  if ($result->num_rows > 0) {
+    while ($rowr = $result->fetch_assoc()) {
+      $q1_input = $rowr['q1'];
+      $q2_input = $rowr['q2'];
+      $q3_input = $rowr['q3'];
+      $q4_input = $rowr['q4'];
+      $q5_input = $rowr['q5'];
+      $q6_input = $rowr['q6'];
+      $q7_input = $rowr['q7'];
+      $q8_input = $rowr['q8'];
+
+      $checklist_array_1 = $rowr['check_list_1'];
+      $checklist_array_2 = $rowr['check_list_2'];
+    }
+  }
+
+  //Skills Logic
+
+  if ($q5_input=='a') {
+    $logical = "Excellent";
+  } else if ($q5_input=='b') {
+    $logical = "Good";
+  } else {
+    $logical = "Average";
+  }
+  if ($q6_input=='a') {
+    $analytical = "Excellent";
+  } else if ($q6_input=='b') {
+    $analytical = "Good";
+  } else {
+    $analytical = "Average";
+  }
+  if ($q7_input=='a') {
+    $computation = "Excellent";
+  } else if ($q7_input=='b') {
+    $computation = "Good";
+  } else {
+    $computation = "Average";
+  }
+  if ($q8_input=='a') {
+    $higher_order = "Excellent";
+  } else if ($q8_input=='b') {
+    $higher_order = "Good";
+  } else {
+    $higher_order = "Average";
+  }
+  
+  //String converter
+
+  $checklist1 = explode(',', $checklist_array_1);
+  $checklist2 = explode(',', $checklist_array_2);
+
+  $conn->close();
 
 ?>  
 <html>

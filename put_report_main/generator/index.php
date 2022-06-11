@@ -15,49 +15,6 @@
     $q6_input = $_GET['q6-input'];
     $q7_input = $_GET['q7-input'];
     $q8_input = $_GET['q8-input'];
-    
-    //Marks Logic
-
-    /* if ($q1_input=='off') {
-      $q1_marks = 0;
-    } else { 
-      $q1_marks = 1;
-    }
-    if ($q2_input=='off') {
-      $q2_marks = 0;
-    } else { 
-      $q2_marks = 1;
-    }
-    if ($q3_input=='off') {
-      $q3_marks = 0;
-    } else { 
-      $q3_marks = 1;
-    }
-    if ($q4_input=='off') {
-      $q4_marks = 0;
-    } else { 
-      $q4_marks = 1;
-    }
-    if ($q5_input=='a') {
-      $q5_marks = 1;
-    } else {
-      $q5_marks = 0;
-    }
-    if ($q6_input=='a') {
-      $q6_marks = 1;
-    } else {
-      $q6_marks = 0;
-    }
-    if ($q7_input=='a') {
-      $q7_marks = 1;
-    } else {
-      $q7_marks = 0;
-    }
-    if ($q8_input=='a') {
-      $q8_marks = 1;
-    } else {
-      $q8_marks = 0;
-    } */
 
     //Skills Logic
 

@@ -40,7 +40,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- JQuery UI -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/MathReportCard/show_all_reports/style.css">
 </head>
 <body>
   <div id="header-container">
@@ -54,7 +54,7 @@
     </div>
   </div>
   <div id="table-outer-container">
-    <div id="table-container" class="shadow p-3">
+    <div id="table-container" class="table-responsive shadow p-3">
       <table id="report-table" class="table table-striped table-bordered">
         <thead>
           <tr>
@@ -75,6 +75,7 @@
             id="filter-marks-out-of-4" data-bs-toggle="modal" data-bs-target="#marksOutOf4Modal" title="Click to filter by marks out of 4">Q1-Q4 Total</th>
             <th scope="col" id="filter-marks-out-of-8" data-bs-toggle="modal" data-bs-target="#marksOutOf8Modal" title="Click to filter by marks out of 8">Q5-Q8 Total</th>
             <th scope="col" id="filter-marks-out-of-12" data-bs-toggle="modal" data-bs-target="#marksOutOf12Modal" title="Click to filter by marks out of 12">Grand Total</th>
+            <th class="text-center">GET</th>
           </tr>
         </thead>
         <tbody id="table-body">
@@ -169,7 +170,10 @@
 
               echo "<td>".$outOf12."&#47;12</td>";
 
+              echo "<td class=\"get-report-card text-center\"><i class=\"fa-solid fa-file-pdf\"></i></td>";
+
               echo "</tr>";
+
             }
           }      
         ?>
@@ -402,24 +406,60 @@
     </div>
   </div>
   <script>
+
+    // Autocomplete for master teacher name
+
     $( function() {
       $( "#tname" ).autocomplete({
-        source: 'autocompleteTname.php',
+        source: function(request, response) {
+          $.ajax({
+            type: 'POST',
+            url: "extractor.php",
+            dataType: "json",
+            data: {
+              term : request.term,
+              selector: 'tname'
+            },
+            success: function(data) {
+              response(data);
+            },
+            error: function(error) {
+              response(error)
+            }
+        });
+        },
         minLength: 1,
         autoFocus:true,
         delay: 0,
         appendTo: "#autocomplete-items"
       });
     });
+
+    // Autocomplete for master teacher name
+
     $( function() {
       $( "#master-tname" ).autocomplete({
-        source: 'autocompleteTname.php',
+        source: function(request, response) {
+          $.ajax({
+            type: 'POST',
+            url: "extractor.php",
+            dataType: "json",
+            data: {
+                term : request.term,
+                selector : 'tname'
+            },
+            success: function(data) {
+                response(data);
+            }
+        });
+        },
         minLength: 1,
         autoFocus:true,
         delay: 0,
         appendTo: ".autocomplete-items"
       });
     });
+    
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>

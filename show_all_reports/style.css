@@ -28,3 +28,7 @@
   cursor: pointer!important;
   display: inline-block;
 }
+.get-report-card {
+  cursor: pointer!important;
+  color: #353596!important;
+}

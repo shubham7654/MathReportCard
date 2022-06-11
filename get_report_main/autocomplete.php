@@ -30,7 +30,15 @@ $result = mysqli_query($conn, $get);
 
 if ($result->num_rows > 0) {
   while ($user = $result->fetch_assoc()) {
-    $res[] = $user['tname'];
+    if($_GET['selector']==='tname') {
+      $res[] = $user['tname'];
+    } else if($_GET['selector']==='pname') {
+      $res[] = $user['pname'];
+    } else if($_GET['selector']==='sname') {
+      $res[] = $user['sname'];
+    } else {
+      return;
+    }
   } 
 } else {
   $res = array();
