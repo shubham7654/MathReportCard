@@ -36,6 +36,11 @@
               </div>
               <div id="pname-input-container" class="name-container input-group my-3">
                 <i class="fa-solid fa-person input-group-text"></i>
+<!--                 <select name="title" id="title">
+                  <option value="Mrs.">Mrs.</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Ms.">Ms.</option>
+                </select> -->
                 <input type="text" name="pname" id="pname-input" class="inputfield form-control name-inputfield " placeholder="Enter Parent&#39;s first Name..." required>
               </div>
               <div id="sname-input-container" class="name-container input-group my-3">

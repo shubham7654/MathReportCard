@@ -68,7 +68,22 @@ $(document).ready(function($) {
   $('#OutOf12-name').change(function() {
       var value = $(this).val().toLowerCase();
       $("#table-body tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
+});
+
+// Filter by Grade and Marks
+
+$(document).ready(function($) {
+  $('#grade-marks-filter-reports-button').one("click", function() {
+    $('#show-more-reports-button').click();
+  });
+  $('#filterByGradeMarks').on("click", function() {
+      var grade_marks = $("#grade-marks-name").val();
+      var marks_grade = $("#marks-grade-name").val();
+      $("#table-body tr").each(function() {
+        $(this).toggle($(this).text().indexOf(marks_grade) > -1 && $(this).text().replace(/\D/g, '')[8] == grade_marks);
       });
     });
 });

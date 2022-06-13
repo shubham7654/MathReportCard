@@ -149,7 +149,11 @@
 
         $outOf12 = $q1_marks+$q2_marks+$q3_marks+$q4_marks+$q5_marks+$q6_marks+$q7_marks+$q8_marks;
 
-        echo "<td>".$outOf12."&#47;12</td>";
+        if($outOf12<10) {
+          echo "<td>0".$outOf12."&#47;12</td>";
+        } else {
+          echo "<td>".$outOf12."&#47;12</td>";
+        }
 
         echo "<td class=\"get-report-card text-center\"><i class=\"fa-solid fa-file-pdf\"></i></td>";
 
@@ -210,5 +214,4 @@
     echo json_encode($res);
     
   }
-
 ?>

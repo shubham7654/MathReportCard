@@ -24,9 +24,9 @@
   color: #157347!important;
   cursor: pointer!important;
 }
-#show-more-reports-button, #master-filter-reports-button {
-  cursor: pointer!important;
-  display: inline-block;
+#show-more-reports-button, #master-filter-reports-button, #grade-marks-filter-reports-button {
+  cursor: pointer !important;
+  display: inline-block !important;
 }
 .get-report-card {
   cursor: pointer!important;

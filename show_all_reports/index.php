@@ -54,8 +54,8 @@
     </div>
   </div>
   <div id="table-outer-container">
-    <div id="table-container" class="table-responsive shadow p-3">
-      <table id="report-table" class="table table-striped table-bordered">
+    <div id="table-container" class="shadow p-3 table-responsive">
+      <table id="report-table" class="table-fixed table table-striped table-bordered">
         <thead>
           <tr>
             <th scope="col" id="filter-date" data-bs-toggle="modal" data-bs-target="#dateModal" title="Click to filter by date">Date</th>
@@ -168,7 +168,11 @@
 
               $outOf12 = $q1_marks+$q2_marks+$q3_marks+$q4_marks+$q5_marks+$q6_marks+$q7_marks+$q8_marks;
 
-              echo "<td>".$outOf12."&#47;12</td>";
+              if($outOf12<10) {
+                echo "<td>0".$outOf12."&#47;12</td>";
+              } else {
+                echo "<td>".$outOf12."&#47;12</td>";
+              }
 
               echo "<td class=\"get-report-card text-center\"><i class=\"fa-solid fa-file-pdf\"></i></td>";
 
@@ -184,6 +188,7 @@
   <div id="show-more-reports-container" class="mx-3">
     <p id="show-more-reports-button" class="text-primary shadow rounded p-2 font-weight-bold">Show more reports...</p>
     <p id="master-filter-reports-button" class="text-primary shadow rounded p-2 font-weight-bold" data-bs-toggle="modal" data-bs-target="#masterModal">Master filter reports...</p>
+    <p id="grade-marks-filter-reports-button" class="text-primary shadow rounded p-2 font-weight-bold" data-bs-toggle="modal" data-bs-target="#gradeMarksModal">Filter Reports by Grade and Marks</p>
   </div>
   <!-- Master Filter -->
   <div class="modal fade" id="masterModal" tabindex="-1" aria-labelledby="masterModalLabel" aria-hidden="true">
@@ -205,7 +210,7 @@
             <div class="mb-3 col">
               <h5>Select Teacher Name</h5>
               <label for="master-tname" class="col-form-label">Teacher Name:</label>
-              <input type="text" class="form-control" id="master-tname" name="master-tname">
+              <input type="text" class="form-control" id="master-tname" name="master-tname" autofocus="autofocus">
               <ul class="autocomplete-items"></ul>
             </div>
             <hr>
@@ -226,6 +231,52 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <input type="submit" id="masterFilter" class="btn btn-primary" data-bs-dismiss="modal" value="Next">
         </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Grade Filter -->
+
+  <div class="modal fade" id="gradeMarksModal" tabindex="-1" aria-labelledby="gradeMarksModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="gradeMarksModalLabel">Filter by Grade and Marks</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="grade-marks-name" class="col-form-label">Grade:</label>
+            <select class="form-control" id="grade-marks-name" name="grade-select">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="marks-grade-name" class="col-form-label">Marks Out of 12:</label>
+            <select class="form-control" id="marks-grade-name" name="marks-select">
+              <option value="00/12">00</option>
+              <option value="01/12">01</option>
+              <option value="02/12">02</option>
+              <option value="03/12">03</option>
+              <option value="04/12">04</option>
+              <option value="05/12">05</option>
+              <option value="06/12">06</option>
+              <option value="07/12">07</option>
+              <option value="08/12">08</option>
+              <option value="09/12">09</option>
+              <option value="10/12">10</option>
+              <option value="11/12">11</option>
+              <option value="12/12">12</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <input type="submit" data-bs-dismiss="modal" id="filterByGradeMarks" class="btn btn-primary" value="Next">
+        </div>  
       </div>
     </div>
   </div>
@@ -267,7 +318,7 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="tname" class="col-form-label">Teacher Name:</label>
-            <input type="text" class="form-control" id="tname" name="tname">
+            <input type="text" class="form-control" id="tname" name="tname" autofocus="autofocus">
             <ul id="autocomplete-items"></ul>
           </div>
         </div>
@@ -382,16 +433,16 @@
           <div class="mb-3">
             <label for="OutOf12-name" class="col-form-label">Marks Out of 12:</label>
             <select class="form-control" id="OutOf12-name" name="filter-marks-out-of-12">
-              <option value="0/12">0</option>
-              <option value="1/12">1</option>
-              <option value="2/12">2</option>
-              <option value="3/12">3</option>
-              <option value="4/12">4</option>
-              <option value="5/12">5</option>
-              <option value="6/12">6</option>
-              <option value="7/12">7</option>
-              <option value="8/12">8</option>
-              <option value="9/12">9</option>
+              <option value="00/12">00</option>
+              <option value="01/12">01</option>
+              <option value="02/12">02</option>
+              <option value="03/12">03</option>
+              <option value="04/12">04</option>
+              <option value="05/12">05</option>
+              <option value="06/12">06</option>
+              <option value="07/12">07</option>
+              <option value="08/12">08</option>
+              <option value="09/12">09</option>
               <option value="10/12">10</option>
               <option value="11/12">11</option>
               <option value="12/12">12</option>
@@ -413,7 +464,7 @@
       $( "#tname" ).autocomplete({
         source: function(request, response) {
           $.ajax({
-            type: 'POST',
+            type: 'post',
             url: "extractor.php",
             dataType: "json",
             data: {
@@ -421,10 +472,7 @@
               selector: 'tname'
             },
             success: function(data) {
-              response(data);
-            },
-            error: function(error) {
-              response(error)
+                response(data);
             }
         });
         },
@@ -441,7 +489,7 @@
       $( "#master-tname" ).autocomplete({
         source: function(request, response) {
           $.ajax({
-            type: 'POST',
+            type: 'post',
             url: "extractor.php",
             dataType: "json",
             data: {
